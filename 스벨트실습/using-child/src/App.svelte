@@ -1,30 +1,40 @@
+<!-- 스크립트 블록 -->
 <script>
-	export let name;
+	import CustomSelect from "./CustomSelect.svelte"; // 하위 컴포넌트 임포트
+
+	// 개발자 A의 코드
+	// 개발자 B의 코드
+	let fruit = "apple";
+	// 개발자 C의 코드
+	let color = "yellow";
+	let colorList = [
+		{ code: "red",    desc: "빨강" },
+		{ code: "yellow", desc: "노랑" },
+		{ code: "green",  desc: "초록" },
+		{ code: "orange", desc: "주황" }
+	];
+
+	// spread 활용하기
+	let param = {
+		choice: "yellow",
+		list: [
+			{ code: "red",    desc: "빨강" },
+			{ code: "yellow", desc: "노랑" },
+			{ code: "green",  desc: "초록" },
+			{ code: "orange", desc: "주황" }
+		]
+	}
 </script>
-
+<!-- HTML 블록 -->
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<ul>
+		<!-- 개발자 A의 HTML 코드 -->
+		<li>개발자 A: <CustomSelect/></li>
+		<!-- 개발자 B의 HTML 코드 -->
+		<li>개발자 B: <CustomSelect bind:choice={fruit}/> - {fruit} 선택됨</li>
+		<!-- 개발자 C의 HTML 코드 -->
+		<li>개발자 C: <CustomSelect list={colorList} bind:choice={color}/> - {color} 선택됨</li>
+		<!-- spread 활용버전의 HTML 코드 -->
+		<li>spread: <CustomSelect {...param}/> - {param.choice} 선택됨</li>
+	</ul>
 </main>
-
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>
