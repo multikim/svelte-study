@@ -2,7 +2,8 @@
 	let rangeValue = 50; // range 초기값
 
 	// 1. 파일 임포트 (store.js에서 count를 꺼낸다)
-	import { count } from "./store.js";
+	// 3-2. power, elapsed 꺼내기
+	import { count, power, elapsed } from "./store.js";
 	// 자동구독(auto-subscription)으로 간단하게 사용하기
 	/*
 	// svelte 임포트, 라이프사이클 함수 onDestroy 꺼내기
@@ -60,5 +61,12 @@
 		{#if flag2} <!-- 체크 여부에 따라 Time 컴포넌트 토글 -->
 			<Time/>
 		{/if}
+	</section>
+
+	<!-- 3-3. derived로 만든 power 스토어와 elapsed 스토어 사용하기 -->
+	<section>
+		<br>
+		<h1>{$count}^2 = {$power} 입니다</h1>
+		<h1>접속 후 {$elapsed} 초가 지났습니다</h1>
 	</section>
 </main>
