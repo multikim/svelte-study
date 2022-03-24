@@ -28,3 +28,19 @@
 }}>
 	Search Inline ({count})
 </button>
+
+<!-- 이벤트 제한자 사용하기 -->
+<button on:click|once={search}> <!-- 한 번만 호출되는 once 제한자 -->
+	Search Once ({count})
+</button>
+
+<!-- 이벤트 제한자 목록 -->
+<!--
+	* preventDefault: event.preventDefault()를 호출. 엘리먼트의 기본 이벤트 동작을 무시한다.
+	* stopPropagation: event.stopPropagation()를 호출. 상위 엘리먼트로 이벤트를 전달하지 않는다.
+	* passive: touch/wheel 이벤트의 속도를 향상시킨다. (스벨트는 자동으로 passive)
+	* nonpassive: 명시적으로 passive: false를 준다.
+	* capture: 하위에서 발생하는 이벤트를 캡처하여(감지하여) 동작한다.
+	* once: 이벤트 처리를 한 번만 한다. 한 번 수행 후 함수 연결을 제거한다.
+	* self: event.target이 자신인 경우에만 동작한다.
+-->
